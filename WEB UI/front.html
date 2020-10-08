@@ -1,0 +1,61 @@
+<style>
+body{
+        margin:0;
+        padding:0;
+        background:url('./860719.jpg') no-repeat;
+        background-size:cover;
+}
+.cont{
+        width:100%;
+        height:100vh;
+}
+.head{
+        width: 50%;
+        height:100%;
+        float:left;
+}
+.head h1{
+        margin-top:15%;
+        color:lightred;
+        text-align: center;
+        font-size:80px;
+}
+.right{
+        width:50%;
+        height:100vh;
+        float:right;
+        text-align:center;
+}
+.upload{
+        padding: 10px 60px;
+        background: linear-gradient(#82d9eb,#3341b6);
+        font-size: 19px;
+        border-radius: 5px;
+        border:#3b6e22 1px solid;
+        color:white;
+        font-weight: bold;
+        cursor:pointer;
+}
+.upload:hover{
+        background: linear-gradient(#3341b6,#82d9eb);
+}
+.file{
+        color:white;
+}
+.right p{
+        font-size:30px;
+        color: white;
+        margin-top: 200px;
+}
+</style>
+
+<body>
+<div class='cont'>
+
+<div class='right'>
+<form enctype="multipart/form-data" action="../cgi-bin/save_file.py" method="post">
+<p>Upload an image:<br></p> <input type="file" accept="image/*" name="photo" required class="file"><br><br>
+<input class="upload" type="submit" value="Upload">
+</form></div>
+</div>
+</body>

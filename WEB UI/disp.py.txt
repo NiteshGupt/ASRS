@@ -1,0 +1,74 @@
+#!/usr/bin/python3
+import cgi
+import cgitb
+import numpy as np
+import os
+import pyrebase
+import json
+cgitb.enable()
+
+print("Content-Type: text/html")
+print("")
+
+css='''body{
+        margin:0;
+        padding:0;
+}
+.head{
+        width: 100%;
+        height: 80px;
+        background-color:rgba(0,0,0,0.9);
+}
+.head h1{
+        padding: 20px 0 0 25%;
+        color:white;
+}
+.head span{
+        font-size:40px;
+}
+.cont{
+        width: 100%;
+        height: 100vh;
+        background-color:rgba(0,0,0,0.2);
+}
+.img{
+        width: 50%;
+        height: 100%;
+        background:url("http://13.127.62.100/output.jpg") 50% 50px no-repeat;
+        background-size:80%;
+        float:left;
+}
+.content{
+        width: 50%;
+        height: 100%;
+        float:right;
+        font-size: 18px;
+
+}
+.content .block{
+        padding-right:20px;
+}
+.left{
+        font-weight:900;
+        font-size:20px;
+}
+.block{
+        padding-top:50px;
+}'''
+print("<head><style>")
+print(css)
+print("</style></head>")
+print("<body>")
+print("<div class='head'><h1>Aves Species Recognition Predictions</h1></div>")
+print("<div class='cont'>")
+print("<div class='img'></div>")
+with open("/var/www/cgi-bin/reqdata.json",encoding='utf-8') as file:
+        data=json.load(file)
+print("<div class='content'>")
+for i in data["birds"]:
+        print("<div class='block'>")
+        print("<span class='left'>Name: </span>"+i["name"]+"<br><br>")
+        print("<span class='left'>Information: </span>"+str(i["info"]).replace("\u2013","-")+"<br>")
+        print("</div>")
+print("</div>")
+print("</body>")
